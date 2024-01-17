@@ -2,6 +2,21 @@
 % '%%' (double percentage) used for section break inside script. 
 % useful when we want to run just one section of code
 
+% 2) 
+% '.m' script is used for saving code
+% '.mat' is used for saving current varible state of workspace
+% ex :-
+% save("filename.mat")
+%load("filename.mat")
+
+% 3) 
+% select keyword + f1 => help
+
+% 4) 
+% clear all :- to undefine all workspace variables
+% clc :- to clean all windows output
+% whos :- gives details about all define variables
+
 
 
 %% VARIABLES 
@@ -22,6 +37,11 @@ disp(names);
 disp(matrix);
 %%
 
+%% DEFINING MULTIPLE VARIABLE in single go :-
+x=10;y=20;
+disp(x);
+disp(y);
+%%
 %% DataTypes:-
 
 % Numerical :- note :- length of each row should be equal while creating
@@ -83,6 +103,18 @@ else
 end
 %%
 
+%% SWITCH :-
+name ="True";
+switch name
+    case "True"
+        disp("its True");
+    case "False"
+        disp("False");
+    otherwise
+        disp("Unknown")
+end
+%%
+
 %% LOOPS :-
 
 % for loop
@@ -125,6 +157,130 @@ result=summ(num1,num2);
 disp(result)
 %%
 
+%% Classes and Objects
+obj1=Employee('Gautam','navodhya nagar',[89,76,78,56],"IT");
+obj1.print();
+disp(obj1.marks());
+
+%%
+%% Inheritance :- 
+% Create objects of the derived class
+myCircle = Circle('Red', 5);
+
+% Access properties and methods from both superclass and subclass
+myCircle.displayColor();
+myCircle.displayArea();
 
 
+%%
+%% Enumeration :- 
+name=Colors.Red;
+disp(name);
+if name==Colors.Green
+    disp("GREEN");
+elseif name==Colors.Red
+    disp("Red");
+else
+    disp("Blue");
+end
 
+%%
+
+
+%% Vector initialization :-
+% create vector with 10 scalars from 1 to 10
+x=1:10;
+disp(x);
+
+% create vector from 10 to 20 with 2 gap
+y=10:2:20;
+disp(y);
+
+% transpose of vector
+z=(10:2:20)';
+disp(z);
+
+%%
+
+%% vector/array indexing : -
+%NOTE:- in matlab, array index starting from 1.
+
+a=[12,323,43,54,65,76];
+% 3rd element
+disp(a(3));
+% all elements of fist row
+% a(rows,columns)
+disp(a(1,:));
+% from 2nd to 4th element of 1 row
+disp(a(1,2:4));
+
+%%
+
+%% Matrix indexing :-
+%NOTE :- indexing starting from 1, and moves in the rows style.
+mat=[21,23;56,78];
+disp(mat(3));
+disp(mat(1,1:2));
+disp(mat(:,end-1:end));
+%%
+
+%% SubMatrix out of Matrix
+mat=[1,2,3,4,5;6,7,8,9,10;11,12,13,14,15;16,17,18,19,20];
+disp(mat);
+disp(mat(1:2,3:5));
+%%
+
+%% PreDefine functions -
+% size():- gives the size of any variables.
+% for scalar :- (1,1)
+print(size("hi"));
+% 
+% sin()
+% cos()
+% tan()
+% exp()
+% log()
+% exp()
+% or
+
+% length, size: Determine the size of an array.
+% sum, mean, std, min, max: Basic statistical functions.
+% find: Find indices of nonzero elements.
+% strcmp: Compare strings.
+% ismember: Check if elements are members of a set.
+
+% eye( n ) - create identity matrix of n*n
+% zeros(n) - create null matriz of n*n
+% ones( n) - create 1 matrix of n*n
+%%
+
+
+%% MATRIX OPERATIONS:-
+mat1=[1,2,3;4,5,6];
+mat2=[0,1,0;7,8,9];
+disp(mat1);
+disp(mat2);
+% transpose
+disp(mat1');
+% used for addition(+),substraction(-_ and multiplication(*)
+disp(mat1+mat2);
+
+% multiplying with same indexing only
+% (.) dot operator used
+disp(mat1.*mat2)
+%%
+
+
+%% Basic Learn Equations :-
+% 2x+2y+z=20
+% -3x-y-z=-18
+% x+y+2z=16
+
+a=[2,2,1;-3,-1,-1;1,1,2];
+c=[20;-18;16];
+
+% we knows, a*x=c
+% thus, x=inverse(a)*c
+% where x[x;y;z]
+x=a\c;  % or can use inv(a)*c, but inv() is slower then \
+disp(x);
